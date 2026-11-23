@@ -20,6 +20,7 @@ assessmentButton.addEventListener(
       // resultDivision に子要素があれば削除し続ける
       resultDivision.removeChild(resultDivision.firstChild)
     }
+    /*
     const heading = document.createElement('h3'); // h3タグの作成
     heading.innerText = '診断結果' // タグの内側のテキストを設定
     resultDivision.appendChild(heading); // divタグの子要素として追加
@@ -28,6 +29,30 @@ assessmentButton.addEventListener(
     const result = assessment(userName); // 診断結果を作成
     paragraph.innerText = result; // pタグの内側のテキストを設定
     resultDivision.appendChild(paragraph); // divタグの子要素としてpタグを追加
+    */
+
+    // headerDivision の作成
+    const headerDivision = document.createElement('div');
+    headerDivision.setAttribute('class', 'card-header text-bg-primary');
+    headerDivision.innerText = '診断結果';
+
+    // bodyDivision の作成
+    const bodyDivision = document.createElement('div');
+    bodyDivision.setAttribute('class', 'card-body');
+
+    const paragraph = document.createElement('p')
+    paragraph.setAttribute('class', 'card-text');
+    const result = assessment(userName);
+    paragraph.innerText = result;
+    bodyDivision.appendChild(paragraph);
+
+    // resultDivision に Bootstrap のスタイルを適用する
+    resultDivision.setAttribute('class', 'card');
+
+    // headerDivision と bodyDivision を resultDivision に差し込む
+    resultDivision.appendChild(headerDivision);
+    resultDivision.appendChild(bodyDivision);
+
     // ツイートエリアの作成
     while (tweetDivision.firstChild)
       tweetDivision.removeChild(tweetDivision.firstChild)
